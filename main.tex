@@ -36,6 +36,8 @@
 \def\Complex{\mathbb{C}}
 \def\Rational{\mathbb{Q}}
 
+\DeclareMathOperator{\ord}{ord}
+
 \usepackage{stackengine,graphicx,amssymb}
 \stackMath
 \newcommand\frightarrow{\scalebox{1}[.3]{$\rule[.45ex]{2ex}{1.5pt}%
@@ -79,7 +81,7 @@
   \section{Понятие группы. Примеры. Циклические группы и их подгруппы.}
   \begin{definition}\label{group_def}
   {\it Группа} - множество $G$ с операцией $\cdot$ (умножения), обладающей следующими свойствами:
- 		\begin{enumerate}[1)]
+ 		\begin{enumerate}
 	 		\item{$\forall a, b, c \in G: (ab)c = a(bc)$ (ассоциативность);}
  			\item{$\exists e \in G~ \forall a \in G~ ae=ea=a$ (существование единицы);}
  			\item{$\forall a \in G ~\exists a^{-1}\in G:aa^{-1}=a^{-1}a=e$ (существование обратного элемента).}
@@ -89,6 +91,13 @@
   	{\it Абелева группа} (коммутативная) - $\forall a, b \in G~ab=ba$.
   \end{definition}
   
+  \begin{definition}\label{subgroup_def}{\it Подгруппа} группы $G$ - $H\subset G$:
+  \begin{enumerate}
+  \item{$\forall a, b\in H~ab\in H$;}
+  \item{$\forall a \in H ~a^{-1}\in H$;}
+  \item{$e \in H$.}
+  \end{enumerate}
+  \end{definition}
 	\begin{definition}\label{transformation_group_def}
 	{\itГруппа преобразований} множества $X$ - совокупность $G$ его биективных преобразований, удовлетворяющая следующим условиям:
 		\begin{enumerate}
@@ -97,6 +106,34 @@
 			\item{$id \in G$ (тождественное).}
 		\end{enumerate}
 	\end{definition}
+	\begin{definition}\label{order_def}
+	Для любой группы $G$ можно определить {\itстепень} элемента $g\in G$ с целым показателем:
+	{\center
+	\begin{equation*}
+	g^k=
+	\begin{cases}
+		\underbrace{gg\ldots g}_{k},&k>0\\
+		e, &k=0\\
+		\underbrace{g^{-1}g^{-1}\ldots g^{-1}}_{k}, &k<0.
+	\end{cases}
+	\end{equation*}}
+	\end{definition}
+	\begin{preposition}\label{order_prep}$\forall g \in G~ \forall k, l \in \Integer~ g^kg^l=g^{k+l}$
+	\begin{proof}Рассмотрим различные случаи для $k, l$
+	\begin{enumerate}
+	\item{$k, l > 0$ - очевидно}
+	\item{$k > 0, l < 0, k+l>0$:
+	\[
+	g^kg^l=\underbrace{gg\ldots g}_{k}\underbrace{g^{-1}g^{-1}\ldots g^{-1}}_{l}=\underbrace{gg\ldots g}_{k+l}=g^{k+l}.\]}
+	\end{enumerate}
+	Остальные случаи рассматриваются аналогично.
+	\end{proof}
+	\end{preposition}
+	\corollary{\label{order_prep_cor}$(g^k)^{-1} = g^{-k}$.}
+	\definition{$\langle g\rangle$ - {\it циклическая подгруппа, порожденная элементом $g$} - подгруппа степеней элемента $g\in G$ (является подгруппой из определения~\ref{order_def}, утверждения~\ref{order_prep} и следствия~\ref{order_prep_cor})}
+	\definition{Минимальное $m\in \Natural: g^m = e$ - {\itпорядок} элемента $g$, обозначается $\ord{g}$}
+
+	
 	\begin{example}
 		$(\mathbb{Z}, +)$ - абелева группа по сложению
 		\begin{itemize}
