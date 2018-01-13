@@ -78,7 +78,7 @@
   \newpage
   \section{Понятие группы. Примеры. Циклические группы и их подгруппы.}
   \begin{definition}\label{group_def}
-  {\it Группа} - множество $G$ с операцией $*$ (умножения), обладающей следующими свойствами:
+  {\it Группа} - множество $G$ с операцией $\cdot$ (умножения), обладающей следующими свойствами:
  		\begin{enumerate}[1)]
 	 		\item{$\forall a, b, c \in G: (ab)c = a(bc)$ (ассоциативность);}
  			\item{$\exists e \in G~ \forall a \in G~ ae=ea=a$ (существование единицы);}
@@ -97,5 +97,27 @@
 			\item{$id \in G$ (тождественное).}
 		\end{enumerate}
 	\end{definition}
- 	\example{$GL_n(K):=$ группа преобразований невырожденных квадратных матриц над полем $K$ размерности $n$.}
+	\begin{example}
+		$(\mathbb{Z}, +)$ - абелева группа по сложению
+		\begin{itemize}
+		\item{$0 \in \mathbb{Z}$ - нейтральный элемент, т.к. $\forall a \in \mathbb{Z} a + 0 = 0 + a = a$}
+		\item{$\forall a \in \mathbb{Z} ~\exists a^{-1} = -a : a + (-a) = (-a) + a = 0$}
+		\end{itemize}
+	\end{example}
+	\begin{example}
+		$(\mathbb{Q}^{\times}, \cdot)$ - абелева группа по умножению, где $\mathbb{Q^\times} = \mathbb{Q}\setminus\{0\}$
+		\begin{itemize}
+		\item{$1 \in \mathbb{Q^\times}$ - нейтральный элемент, т.к. $\forall a \in \mathbb{Q^\times} ~a \cdot 1 = 1 \cdot a = a$}
+		\item{$\forall a \in \mathbb{Q^\times} ~\exists a^{-1} = \frac{1}{a} : a\cdot\frac{1}{a} = \frac{1}{a}\cdot a = 1$}
+		\end{itemize}
+	\end{example}
+ 	\example{$GL_n(\mathbb{R})$\footnote{Название произошло от 'General linear group'.} - группа невырожденных\footnote{Для тех, кто не помнит: матрицы с ненулевым определителем.} матриц по умножению\footnote{Из курса алгема: $\forall A: \det{A} \neq 0 \Rightarrow \exists A^{-1}: A A^{-1}=A^{-1}A=E$, где $E$ - единичная, и $\det{AB} = \det{A}\cdot \det{B}$.}.}
+ 	\example{$SL_n[\Real] \subset GL_n[\Real]:=\footnote{Название от 'Special linear group'.} \forall A \in SL_n[\Real]~\det{A} = 1$}
+ 	\example{$(S_n, \circ)$\footnote{Название от 'Symmetric group'.} - группа перестановок элементов вида $\left\{1,\ldots, n\right\}$, рассматриваемых как функции $\{1,\ldots,n\}\rightarrow S_n$. $\circ$ - операция композиции функций. Является группой, т.к. есть тождественная перестановка и у каждой перестановки есть обратная. Также следует заметить, что $S_n$ подходит под определение~\ref{transformation_group_def}, поэтому можно задать действие $S_n$ на любом конечном множестве.}
+ 	\example{$D_{2n}$ - группа Диэдра - группа симметрий правильного $n$-угольника $A_1, \ldots, A_n$, включающая поворот и отражение. Состоит из $2n$ элементов:
+ 	\[
+ 	\{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\},
+ 	\]
+ 	где $r$ - поворот $n$-угольника на $\frac{2\pi}{n}$, а $s$ - отражение относительно $OA_1$, где $O$ - центр фигуры. Таким образом, $rs$ - повернуть и отразить (читаем слева направо, как композиция функций). В частности, $r^n=s^2=1$ и $r^ks=sr^{-k}$.}
+ 	\example{$\{1\}$ - тривиальная группа.}
 \end{document}  
