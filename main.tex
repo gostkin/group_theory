@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[a4paper, left=20mm, right=20mm, top=30mm, bottom=20mm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{xparse}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{perpage} %the perpage package
+\MakePerPage{footnote}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\def\E{\mathbb{E}}
+\def\Var{\mathrm{Var}}
+\def\Cov{\mathrm{cov}}
+\def\Corr{\mathrm{corr}}
+\def\salg{\mathcal{F}}
+\def\prob{\mathcal{P}}
+\def\borel{\mathcal{B}}
+\def\cantor{\mathcal{C}}
+
+\def\eps{\varepsilon}
+\def\Real{\mathbb{R}}
+\def\Proj{\mathbb{P}}
+\def\Hyper{\mathbb{H}}
+\def\Integer{\mathbb{Z}}
+\def\Natural{\mathbb{N}}
+\def\Complex{\mathbb{C}}
+\def\Rational{\mathbb{Q}}
+
+\usepackage{stackengine,graphicx,amssymb}
+\stackMath
+\newcommand\frightarrow{\scalebox{1}[.3]{$\rule[.45ex]{2ex}{1.5pt}%
+		\kern-.2ex{\blacktriangleright}$}}
+\newcommand\darrow[1][]{\mathrel{\stackon[1pt]{\stackanchor[1pt]{\frightarrow}{\frightarrow}}{\scriptstyle#1}}}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\renewcommand{\thesection}{\arabic{section}}
+
+\theoremstyle{definition}
+\newtheorem{task}{Задача}[section]
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{preposition}{Утверждение}[section]
+\newtheorem{corollary}{Следствие}[section]
+\newtheorem{remark}{Замечание}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{example}{Пример}[section]
+
+\makeatletter
+\renewcommand\footnoterule{%
+	\kern-3\p@
+	\hrule\@width \textwidth
+	\kern2.6\p@}
+\makeatother
+
+\title{\textbf{Теория групп, ФПМИ МФТИ}}
+\author{Госткин Евгений Михайлович}
+\date{}
+
+\begin{document}
+  \setlength{\parindent}{1cm}
+  \maketitle
+  \tableofcontents
+  \newpage
+  \section{Понятие группы. Примеры. Циклические группы и их подгруппы.}
+  \begin{definition}\label{group_def}
+  {\it Группа} - множество $G$ с операцией $*$ (умножения), обладающей следующими свойствами:
+ 		\begin{enumerate}[1)]
+	 		\item{$\forall a, b, c \in G: (ab)c = a(bc)$ (ассоциативность);}
+ 			\item{$\exists e \in G~ \forall a \in G~ ae=ea=a$ (существование единицы);}
+ 			\item{$\forall a \in G ~\exists a^{-1}\in G:aa^{-1}=a^{-1}a=e$ (существование обратного элемента).}
+ 		\end{enumerate}
+  \end{definition}
+  \begin{definition}\label{abelian_group_def}
+  	{\it Абелева группа} (коммутативная) - $\forall a, b \in G~ab=ba$.
+  \end{definition}
+  
+	\begin{definition}\label{transformation_group_def}
+	{\itГруппа преобразований} множества $X$ - совокупность $G$ его биективных преобразований, удовлетворяющая следующим условиям:
+		\begin{enumerate}
+			\item{$\phi, \psi\in G\Rightarrow\phi\circ\psi\in G$;}
+			\item{$\phi\in G\Rightarrow\phi^{-1}\in G$;}
+			\item{$id \in G$ (тождественное).}
+		\end{enumerate}
+	\end{definition}
+ 	\example{$GL_n(K):=$ группа преобразований невырожденных квадратных матриц над полем $K$ размерности $n$.}
+\end{document}  
