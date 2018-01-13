@@ -38,6 +38,11 @@
 
 \DeclareMathOperator{\ord}{ord}
 
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\is}{\Leftrightarrow}
+
 \usepackage{stackengine,graphicx,amssymb}
 \stackMath
 \newcommand\frightarrow{\scalebox{1}[.3]{$\rule[.45ex]{2ex}{1.5pt}%
@@ -91,7 +96,7 @@
   	{\it Абелева группа} (коммутативная) - $\forall a, b \in G~ab=ba$.
   \end{definition}
   
-  \begin{definition}\label{subgroup_def}{\it Подгруппа} группы $G$ - $H\subset G$:
+  \begin{definition}\label{subgroup_def}{\it Подгруппа} $H\subset G$:
   \begin{enumerate}
   \item{$\forall a, b\in H~ab\in H$;}
   \item{$\forall a \in H ~a^{-1}\in H$;}
@@ -106,7 +111,7 @@
 			\item{$id \in G$ (тождественное).}
 		\end{enumerate}
 	\end{definition}
-	\begin{definition}\label{order_def}
+	\begin{definition}\label{stepen_def}
 	Для любой группы $G$ можно определить {\itстепень} элемента $g\in G$ с целым показателем:
 	{\center
 	\begin{equation*}
@@ -118,7 +123,7 @@
 	\end{cases}
 	\end{equation*}}
 	\end{definition}
-	\begin{preposition}\label{order_prep}$\forall g \in G~ \forall k, l \in \Integer~ g^kg^l=g^{k+l}$
+	\begin{preposition}\label{stepen_prep}$\forall g \in G~ \forall k, l \in \Integer~ g^kg^l=g^{k+l}$
 	\begin{proof}Рассмотрим различные случаи для $k, l$
 	\begin{enumerate}
 	\item{$k, l > 0$ - очевидно}
@@ -129,10 +134,74 @@
 	Остальные случаи рассматриваются аналогично.
 	\end{proof}
 	\end{preposition}
-	\corollary{\label{order_prep_cor}$(g^k)^{-1} = g^{-k}$.}
-	\definition{$\langle g\rangle$ - {\it циклическая подгруппа, порожденная элементом $g$} - подгруппа степеней элемента $g\in G$ (является подгруппой из определения~\ref{order_def}, утверждения~\ref{order_prep} и следствия~\ref{order_prep_cor})}
-	\definition{Минимальное $m\in \Natural: g^m = e$ - {\itпорядок} элемента $g$, обозначается $\ord{g}$}
+	\corollary{\label{stepen_prep_cor}$(g^k)^{-1} = g^{-k}$.}
+	\definition{$\langle g\rangle$ - {\it циклическая подгруппа, порожденная элементом $g$} - подгруппа степеней элемента $g\in G$ (является подгруппой из определения~\ref{stepen_def}, утверждения~\ref{stepen_prep} и следствия~\ref{stepen_prep_cor})}
+	\definition{\label{order_def}Минимальное $m\in \Natural: g^m = e$ - {\itпорядок} элемента $g$, обозначается $\ord{g}$, если $\nexists m: g^m=e$, то $\ord{g}=\infty$.}
 
+	\begin{preposition}\label{order_prep}
+	Если $\ord{g} = n$:
+	\begin{enumerate}
+	\item{$g^m = e\Leftrightarrow n | m$;}
+	\item{$g^k=g^l\Leftrightarrow k \equiv l ~\mod{n}$.}
+	\end{enumerate}
+	\begin{proof}
+	\begin{enumerate}
+	\item{$m = qn + r$,\quad $0\leq r < n$ $\Rightarrow\footnote{По определению~\ref{order_def}} g^m=(g^n)^q\cdot g^r=g^r=e\Leftrightarrow r = 0;$}
+	\item{$g^k=g^l \is g^{k-l}=e\is n|(k-l)\is k\equiv l \mod{n}$.}
+	\end{enumerate}
+	\end{proof}
+	\end{preposition}
+	\begin{corollary}\label{order_prep_cor}
+	Если $\ord{g}=n$, то $\left|\langle g\rangle\right| = n$
+	\begin{proof}$\langle g\rangle=\{e, g, g^2, \ldots, g^{n-1}\}$, и все элементы различны.
+	\end{proof}
+	\end{corollary}
+	\definition{\label{finite_group_order_def}{\itПорядок конечной группы} $G$ - количество элементов в ней, т.е. $\ord{G} = \left|G\right|$}
+	\definition{\label{cyclic_group_def}Группа $G$ называется {\itциклической}, если $\exists g \in G: G=\langle g\rangle$. Всякий такой элемент - {\itпорождающий}.}
+	\begin{preposition}\label{ord_prep} $\ord{g} = n \implies \ord{g^k} = \frac{n}{(n, k)}$
+	\begin{proof}
+	\begin{enumerate}
+	\item{$(n, k) = d, n = n_1d, k = k_1d: (n_1, k_1) = 1$;}
+	\item{$(g^k)^m=e\is n|km\is n_1|k_1m\is n_1 |m$, откуда $\ord{g^k} = n_1$.}
+	\end{enumerate}
+	\end{proof}
+	\end{preposition}
+	\corollary{\label{ord_prep_cor}$g^k\in G=\langle g \rangle$ - порождающий $\is (n, k) = 1.$}
+	
+	\begin{theorem}\label{cyclic_group_theorem}
+	Любая бесконечная циклическая группа изоморфна группе $\Integer$, любая конечная циклическая группа порядка $n$ изоморфна $\Integer_n$
+	\begin{proof}
+	\begin{enumerate}
+	\item{$G=\langle g\rangle, \ord{G} = \infty\implies f:\Integer\rightarrow G, k\mapsto g^k$ - изоморфизм;}
+	\item{$G=\langle g \rangle, \ord{G} = n.$ Рассмотрим отображение:
+	\begin{equation}
+	f:\Integer_n\rightarrow G, [k]\mapsto g^k\quad k\in \Integer
+	\end{equation}}
+	\begin{equation}\label{eq:2}
+	[k] = [l]\is k\equiv l \mod{n}\is g^k=g^l
+	\end{equation}
+	Из \ref{eq:2} следует, что $f$ корректно определено и биективно, $f(k+l)=f(k)f(l)$ получается из утверждения~\ref{stepen_prep}, откуда $f$ - изоморфизм.
+	\end{enumerate}
+	\end{proof}
+	\end{theorem}
+	
+	
+	
+	\begin{theorem}\label{subgroup_cyclic_theorem}
+	\begin{enumerate}
+	\item{Любая подгруппа циклической группы - циклическая}
+	\item{В циклической группе порядка $n$ порядок любой подгруппы делит $n$ и $\forall q: q | n \exists ! H$ - подгруппа порядка $q$}
+	\end{enumerate}
+	\begin{proof}
+	\begin{enumerate}
+	\item{
+	$G=\langle g\rangle$ - циклическая, $H$ - нетривиальная\footnote{Тривиальная подгруппа, очевидно, циклическая} подгруппа $G$. Если для $m~\in~\Natural~\exists g^{-m}\in H$, то $g^m\in H$. Пусть $m$ - минимальное натуральное число такое, что $g^m\in H$. Докажем, что $H = \langle g^m\rangle$. Пусть $g\in H, k = qm+r, 0\leq r<m$, тогда $g^r=g^k(g^m)^-q\in H$, откуда по определению $m$ получается, что $r=0$, откуда $g^k=(g^m)^q$.}
+	\item{
+	Если $|G|=n$, то предыдущее рассуждение при $k = n (g^k=e\in H)$ показывает, что $n=qm$. При этом \begin{equation}\label{eq:3}H = \{e, g^m, g^2m, \ldots, g^{(q-1)m}\}\end{equation} и $H$ - единственная подгруппа порядка $q$ в группе $G$. Обратно, если $q |n, n = qm$, то подмножество $H$, определенное уравнением \eqref{eq:3} - подгруппа порядка $q$.}
+	\end{enumerate}
+	\end{proof}
+	\end{theorem}
+	\corollary{В циклической группе простого порядка любая неединичная подгруппа совпадает со всей группой.}
 	
 	\begin{example}
 		$(\mathbb{Z}, +)$ - абелева группа по сложению
@@ -149,7 +218,7 @@
 		\end{itemize}
 	\end{example}
  	\example{$GL_n(\mathbb{R})$\footnote{Название произошло от 'General linear group'.} - группа невырожденных\footnote{Для тех, кто не помнит: матрицы с ненулевым определителем.} матриц по умножению\footnote{Из курса алгема: $\forall A: \det{A} \neq 0 \Rightarrow \exists A^{-1}: A A^{-1}=A^{-1}A=E$, где $E$ - единичная, и $\det{AB} = \det{A}\cdot \det{B}$.}.}
- 	\example{$SL_n[\Real] \subset GL_n[\Real]:=\footnote{Название от 'Special linear group'.} \forall A \in SL_n[\Real]~\det{A} = 1$}
+ 	\example{$SL_n[\Real]$\footnote{Название от 'Special linear group', является подгруппой $GL_n(R)$.} $\subset GL_n[\Real]:= \forall A \in SL_n[\Real]~\det{A} = 1$}
  	\example{$(S_n, \circ)$\footnote{Название от 'Symmetric group'.} - группа перестановок элементов вида $\left\{1,\ldots, n\right\}$, рассматриваемых как функции $\{1,\ldots,n\}\rightarrow S_n$. $\circ$ - операция композиции функций. Является группой, т.к. есть тождественная перестановка и у каждой перестановки есть обратная. Также следует заметить, что $S_n$ подходит под определение~\ref{transformation_group_def}, поэтому можно задать действие $S_n$ на любом конечном множестве.}
  	\example{$D_{2n}$ - группа Диэдра - группа симметрий правильного $n$-угольника $A_1, \ldots, A_n$, включающая поворот и отражение. Состоит из $2n$ элементов:
  	\[
@@ -157,4 +226,22 @@
  	\]
  	где $r$ - поворот $n$-угольника на $\frac{2\pi}{n}$, а $s$ - отражение относительно $OA_1$, где $O$ - центр фигуры. Таким образом, $rs$ - повернуть и отразить (читаем слева направо, как композиция функций). В частности, $r^n=s^2=1$ и $r^ks=sr^{-k}$.}
  	\example{$\{1\}$ - тривиальная группа.}
-\end{document}  
+ 	\example{В группе $\Integer$ любая подгруппа имеет вид $n\Integer$, где $n > 0$}
+ 	
+\end{document} 
+
+\begin{theorem}
+	\begin{enumerate}
+	\item{}
+	\end{enumerate}
+	\begin{proof}
+	\begin{enumerate}
+	\item{
+	
+	;}
+	\item{
+	
+	.}
+	\end{enumerate}
+	\end{proof}
+	\end{theorem} 
