@@ -195,9 +195,9 @@
 	\begin{proof}
 	\begin{enumerate}
 	\item{
-	$G=\langle g\rangle$ - циклическая, $H$ - нетривиальная\footnote{Тривиальная подгруппа, очевидно, циклическая} подгруппа $G$. Если для $m~\in~\Natural~\exists g^{-m}\in H$, то $g^m\in H$. Пусть $m$ - минимальное натуральное число такое, что $g^m\in H$. Докажем, что $H = \langle g^m\rangle$. Пусть $g\in H, k = qm+r, 0\leq r<m$, тогда $g^r=g^k(g^m)^-q\in H$, откуда по определению $m$ получается, что $r=0$, откуда $g^k=(g^m)^q$.}
+	$G=\langle g\rangle$ - циклическая, $H$ - нетривиальная\footnote{Тривиальная подгруппа, очевидно, циклическая} подгруппа $G$. Если для $m~\in~\Natural~\exists g^{-m}\in H$, то $g^m\in H$. Пусть $m$ - минимальное натуральное число такое, что $g^m\in H$. Докажем, что $H = \langle g^m\rangle$. Пусть $g\in H, k = qm+r, 0\leq r<m$, тогда $g^r=g^k(g^m)^{-q}\in H$, откуда по определению $m$ получается, что $r=0$, откуда $g^k=(g^m)^q$.}
 	\item{
-	Если $|G|=n$, то предыдущее рассуждение при $k = n (g^k=e\in H)$ показывает, что $n=qm$. При этом \begin{equation}\label{eq:3}H = \{e, g^m, g^2m, \ldots, g^{(q-1)m}\}\end{equation} и $H$ - единственная подгруппа порядка $q$ в группе $G$. Обратно, если $q |n, n = qm$, то подмножество $H$, определенное уравнением \eqref{eq:3} - подгруппа порядка $q$.}
+	Если $|G|=n$, то предыдущее рассуждение при $k = n (g^k=e\in H)$ показывает, что $n=qm$. При этом \begin{equation}\label{eq:3}H = \{e, g^m, g^{2m}, \ldots, g^{(q-1)m}\}\end{equation} и $H$ - единственная подгруппа порядка $q$ в группе $G$. Обратно, если $q |n, n = qm$, то подмножество $H$, определенное уравнением \eqref{eq:3} - подгруппа порядка $q$.}
 	\end{enumerate}
 	\end{proof}
 	\end{theorem}
@@ -227,6 +227,69 @@
  	где $r$ - поворот $n$-угольника на $\frac{2\pi}{n}$, а $s$ - отражение относительно $OA_1$, где $O$ - центр фигуры. Таким образом, $rs$ - повернуть и отразить (читаем слева направо, как композиция функций). В частности, $r^n=s^2=1$ и $r^ks=sr^{-k}$.}
  	\example{$\{1\}$ - тривиальная группа.}
  	\example{В группе $\Integer$ любая подгруппа имеет вид $n\Integer$, где $n > 0$}
+ 	
+ 	\newpage
+ 	\section{Смежные классы по подгруппе, индекс подгруппы. Теорема Лагранжа.}
+ 	
+ 	\definition{\label{equiv_def}$G$ - группа, $H \subseteq G$ - подгруппа, тогда $g_1$ и $g_2$ {\it сравнимы по модулю} $H$, если $g_1 \equiv g_2 \mod{G}\is g_1^{-1}g_2\in H \is \exists h \in H: g_2=g_1h$.}
+ 	\begin{preposition}
+ 	\label{equiv_prep}
+ 	Отношение из определения~\ref{equiv_def} - отношение эквивалентности.
+ 	\begin{proof}
+ 	\begin{enumerate}
+ 	\item{$g\equiv g \mod{H}: g^{-1}g=e\in H$;}
+ 	\item{$g_1\equiv g_2 \mod{H} \implies g_2\equiv g_1 \mod{H}:
+ 	g_2^{-1}g_1=(g_1^{-1}g_2)^{-1}\in H$;}
+ 	\item{$g_1\equiv g_2 \mod{H} \land g_2\equiv g_3\mod{H} \implies g_1\equiv g_3 \mod{H}: g_1^{-1}g_2\in H, g_2^{-1}g_3\in H: g_1^{-1}g_3=g_1^{-1}g_2g_2^{-1}g_3=(g_1^{-1}g_2)(g_2^{-1}g_3)\in H$.}
+ 	\end{enumerate}
+ 	\end{proof}
+ 	\end{preposition}
+ 	
+ 	\definition{\label{equiv_classes_def}Классы эквивалентности $gH=\{gh | h\in H\}$из определения~\ref{equiv_def} называются {\it левыми смежными классами} по подгруппе $H$, $Hg = \{hg | h \in H\}$ - {\it правыми смежными классами.}}
+ 	\begin{remark}{$g\mapsto g^{-1}$ - биекция между левыми и правыми смежными классами.}
+ 	\begin{proof}
+ 	\[
+ 	(gH)^{-1}=Hg^{-1}.
+ 	\]
+ 	\end{proof}
+ 	\end{remark}
+ 	\begin{preposition}
+ 	\label{equiv_classes_not_intersect_prep}
+ 	$H\subseteq G, \forall a, b\in G~aH\cap bH \neq \emptyset \implies b\in aH.$
+ 	\begin{proof}
+ 	$\forall a, b\in G~aH\cap bH \neq \emptyset \is b^{-1}a\in H\is aH=bH\is b\in aH.$
+ 	\end{proof}
+ 	\end{preposition}
+ 	
+ 	\definition{Индексом подгруппы $H$ группы $G$ называется число смежных классов $G$ по $H$, обозначается $\left|G : H\right|$.}
+ 	\begin{theorem}
+ 	\label{lagrange_theorem}(Лагранжа)
+ 	$G$ - конечная группа, $H\subseteq G\implies \left|G\right|=\left|G:H\right|\left|H\right|.$
+ 	\begin{proof}
+ 	\begin{enumerate}
+ 	\item{$\forall X=gH\implies\left|X\right|=\left|H\right|$ (очевидно, так как в $H$ все элементы различны, $gH$, полученный умножением всех $h\in H$ на $g$, имеет ту же мощность, если бы это было не так, получилось бы, что мощность $H$ меньше, чем была).}
+ 	\item{Смежные классы образуют разбиение $G$ на классы эквивалентности, поэтому $\left|G\right|$ есть произведение размерности каждого класса эквивалентности (у всех $|H|$), на их число, т.е. индекс $G$ по $H$.}
+ 	\end{enumerate}
+ 	\end{proof}
+ 	\end{theorem}
+ 	\corollary{\label{lagrange_theorem_cor_order}
+		Порядок любой подгруппы конечной группы делит порядок группы.
+ 	}
+ 	\begin{corollary}\label{lagrange_theorem_cor_order_element}
+		Порядок любого элемента подгруппы конечной группы делит порядок группы. 	
+		\begin{proof}
+		Вытекает из следствия~\ref{lagrange_theorem_cor_order} и того, что порядок элемента равен порядку порождаемой им циклической подгруппы.
+		\end{proof}
+ 	\end{corollary}
+ 	\begin{corollary}\label{lagrange_theorem_cor_simple}
+		Всякая конечная группа простого порядка является циклической. 
+		\begin{proof}
+		Следствие~\ref{lagrange_theorem_cor_order}$\implies$ такая группа совпадает с циклической подгруппой, порожденной любым элементом, не равным $e$.
+		\end{proof}			
+ 	\end{corollary}
+ 	
+ 	\section{Гомоморфизмы групп, ядро и образ гомоморфизма. Нормальные подгруппы, факторгруппа. Теоремы о гомоморфизмах.}
+ 	
  	
 \end{document} 
 
