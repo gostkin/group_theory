@@ -6,6 +6,9 @@
 \usepackage[russian]{babel}
 \usepackage{xparse}
 \usepackage[shortlabels]{enumitem}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage{graphicx}
+\usepackage{setspace}
 
 \usepackage{perpage} %the perpage package
 \MakePerPage{footnote}
@@ -37,6 +40,9 @@
 \def\Rational{\mathbb{Q}}
 
 \DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+
 
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
@@ -74,13 +80,67 @@
 	\kern2.6\p@}
 \makeatother
 
-\title{\textbf{Теория групп, ФПМИ МФТИ}}
-\author{Госткин Евгений Михайлович}
-\date{}
+%\title{\textbf{Теория групп, ФПМИ МФТИ}}
+%\author{Госткин Евгений Михайлович}
 
 \begin{document}
+\begin{titlepage}
+\enlargethispage{\footskip}
+\setlength{\parindent}{0pt}
+
+\begin{center}
+    \onehalfspacing
+    
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.35]{./logo.png}
+\end{figure}    
+
+    \large
+    МОСКОВСКИЙ ФИЗИКО-ТЕХНИЧЕСКИЙ ИНСТИТУТ\\
+    ШКОЛА ПРИКЛАДНОЙ МАТЕМАТИКИ И ИНФОРМАТИКИ
+
+    \vspace{20mm}
+
+    \huge
+    \textbf{Теория групп}
+\end{center}
+
+\vspace{23mm}
+
+\begin{minipage}[t]{0.5\textwidth}
+    \raggedright
+    \onehalfspacing
+    \large
+    \textit{Автор}:\\[.5\baselineskip]
+    Госткин Евгений Михайлович
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth}
+    \raggedleft
+    \onehalfspacing
+    \large
+    \textit{Проверили}:\\[.5\baselineskip]
+    
+
+    \vspace{5mm}
+\end{minipage}%
+
+\vspace{\fill}
+
+\begin{minipage}[b]{\textwidth}
+    \centering
+    \onehalfspacing
+    \large   
+    Последняя сборка: \today\ в \currenttime \\
+    Академический год 2017/2018
+
+    \vspace{-20mm} 
+\end{minipage}%
+\end{titlepage}
   \setlength{\parindent}{1cm}
-  \maketitle
+
+
+  %\maketitle
   \tableofcontents
   \newpage
   \section{Понятие группы. Примеры. Циклические группы и их подгруппы.}
@@ -288,7 +348,46 @@
 		\end{proof}			
  	\end{corollary}
  	
+ 	\newpage
  	\section{Гомоморфизмы групп, ядро и образ гомоморфизма. Нормальные подгруппы, факторгруппа. Теоремы о гомоморфизмах.}
+ 	
+ 	\definition{\label{homomorphism_def}{\it Гомоморфизмом} групп $(G, \circ)$ и $(H, \cdot)$ называется такое отображение $\phi:~G~\rightarrow ~H$, что:
+	\[
+	\forall a, b\in G~\phi(a\circ b)=\phi(a)\cdot\phi(b)
+	\] 	
+ 	}
+ 	
+ 	\definition{\label{image_def}
+		{\it Образом} гомоморфизма $\phi$ называется множество $\Ima{\phi}=\{h\in H | \exists a\in G: \phi(a)=h\}$.
+ 	}
+ 	\definition{\label{kernel_def}
+		{\it Ядром} гомоморфизма $\phi$ называется множество $\Ker \phi=\{g\in G|\phi(g)=e\}$.	
+ 	}
+ 	
+ 	\definition{\label{normal_group_def}
+	Подгруппа $H$ группы $G$ называется {\it нормальной}, если $\forall g\in G ~gH=Hg$.
+ 	}
+ 	
+ 	\begin{preposition}$H\subseteq G, |G:H|=2\implies H\triangleleft G$
+ 	\begin{proof}
+ 	$G$ разбивается на левые смежные классы $eH=H$ и $G\setminus H$, и аналогично на правые $He=H$ и $G\setminus H$, соответственно:
+ 	\begin{enumerate}
+ 	\item{$g\in H \implies gH=Hg=H$}
+ 	\item{$g\in G\setminus H\implies gH=G\setminus H=Hg$}
+\end{enumerate} 	 
+ 	\end{proof}
+ 	\end{preposition}
+ 	
+ 	\begin{preposition}
+ 	$H_1 \triangleleft G \land H_2 \triangleleft G\implies H_1\cap H_2\triangleleft G$
+ 	\begin{proof}
+ 	\begin{enumerate}
+ 	\item{$H_1\cap H_2$, очевидно, подгруппа $G$;}
+ 	\item{Докажем, что $\forall g\in G g^{-1} (H_1\cap H_2)g=H_1\cap H_2$:}
+ 	\subitem{kek}
+ 	\end{enumerate}
+ 	\end{proof}
+ 	\end{preposition}
  	
  	
 \end{document} 
