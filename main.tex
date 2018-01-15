@@ -47,7 +47,9 @@
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\implies}{\Rightarrow}
+\renewcommand{\land}{\wedge}
 \newcommand{\is}{\Leftrightarrow}
+\newcommand{\tl}{\triangleleft}
 
 \usepackage{stackengine,graphicx,amssymb}
 \stackMath
@@ -384,10 +386,31 @@
  	\begin{enumerate}
  	\item{$H_1\cap H_2$, очевидно, подгруппа $G$;}
  	\item{Докажем, что $\forall g\in G g^{-1} (H_1\cap H_2)g=H_1\cap H_2$:}
- 	\subitem{kek}
+ 	\begin{enumerate}
+ 	\item{$\forall{h \in H_1 \cap H_2}~g^{-1}hg \in H_1 \land g^{-1}hg \in H_2 \implies g^{-1}hg \in H_1 \cap H_2 \implies \forall g \in G ~g^{-1}(H_1\cap H_2)g\subseteq H_1\cap H_2$;}
+ 	\item{$g(H_1\cap H_2)g^{-1}\subseteq H_1\cap H_2 \implies H_1\cap H_2=g^{-1}g(H_1\cap H_2)g^{-1}g\subseteq g^{-1}(H_1\cap H_2)g$.}
+ 	\end{enumerate}
  	\end{enumerate}
  	\end{proof}
  	\end{preposition}
+ 	
+\begin{preposition}
+  \label{normal_and_sub_prep}
+  $(H \tl G$, $K$ - подгруппа $G) \implies HK = \{ hk : h \in H, k \in K \}$ - подгруппа $G$. $K \tl G \implies HK \tl G$.
+\begin{proof}
+\begin{enumerate}
+\item{$HK = KH$:$$HK = \bigcup_{k \in K} Hk =
+  \bigcup_{k \in K} kH = KH$$.}
+  \item{$HK < G$:}
+  \begin{enumerate}
+  \item{$(HK)(HK) = H(KH)K = HH KK = HK$;}
+  \item{ $(HK)^{-1} = K^{-1}H^{-1} = KH = HK$.}
+  \end{enumerate}
+  \item{$K \tl G\implies \forall{g \in G}~gHK = HgK = HKg \implies HK \tl G$}
+\end{enumerate}
+\end{proof}
+\end{preposition}
+
  	
  	
 \end{document} 
